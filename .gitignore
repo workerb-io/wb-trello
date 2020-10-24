@@ -106,4 +106,6 @@ trello
 
 .idea
 
+.DS_Store
+
 config.json
