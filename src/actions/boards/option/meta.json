@@ -1,0 +1,23 @@
+{
+	"name": "boards options",
+	"scripts": [
+		{
+			"name": "delete",
+			"file": "delete.js",
+			"type": "action",
+			"description": "Delete Board"
+		},
+		{
+			"name": "rename",
+			"file": "rename.js",
+			"type": "action",
+			"description": "Rename Board"
+		},
+		{
+			"name": "lists",
+			"file": "lists",
+			"type": "folder",
+			"description": "Get Lists"
+		}
+	]
+}

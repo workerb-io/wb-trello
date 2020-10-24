@@ -1,0 +1,30 @@
+{
+	"name": "cards",
+	"description": "cards cheat sheet",
+	"scripts": [
+		{
+			"name": "delete",
+			"file": "delete.js",
+			"type": "action",
+			"description": "Delete Card"
+		},
+		{
+			"name": "rename",
+			"file": "rename.js",
+			"type": "action",
+			"description": "Rename a card"
+		},
+		{
+			"name": "update",
+			"file": "update.js",
+			"type": "action",
+			"description": "Rename a card"
+		},
+		{
+			"name": "members",
+			"file": "members",
+			"type": "folder",
+			"description": "members cheat sheet"
+		}
+	]
+}
