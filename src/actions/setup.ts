@@ -4,11 +4,27 @@ const key = read('#key', {
 	method: 'by_query_selector',
 })
 
-const secret = read('#secret', {
-	method: 'by_query_selector',
-})
+const secretURL = getAttribute(["href"], '[data-track-direct-object="generate token link"]', {
+	method: "by_query_selector"
+}) as any
 
-if (!key || !secret) {
+let token: string | null = null
+
+if (secretURL[0] && secretURL[0].href) {
+	open(`https://trello.com${secretURL[0] && secretURL[0].href}`)
+
+	click("#approveButton:not([disabled])", {
+		method: "by_query_selector",
+		expectReload: true,
+		retryDuration: 500
+	})
+
+	token = read("pre", {
+		method: "by_query_selector"
+	})
+}
+
+if (!key || !token) {
 	notify("Trello Secrets can't be empty", 'error', 3000)
 } else {
 	setVar('trello', [
@@ -20,7 +36,7 @@ if (!key || !secret) {
 	setVar('trello', [
 		{
 			name: 'TRELLO_SECRET',
-			value: secret,
+			value: token,
 		},
 	])
 	notify('Secrets added successfully', 'success', 3000)
