@@ -13,7 +13,7 @@ let token: string | null = null
 if (secretURL[0] && secretURL[0].href) {
 	open(`https://trello.com${secretURL[0] && secretURL[0].href}`)
 
-	click("#approveButton:not([disabled])", {
+	click("#approveButton", {
 		method: "by_query_selector",
 		expectReload: true,
 		retryDuration: 500
