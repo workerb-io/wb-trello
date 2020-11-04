@@ -27,18 +27,33 @@ if (secretURL[0] && secretURL[0].href) {
 if (!key || !token) {
 	notify("Trello Secrets can't be empty", 'error', 3000)
 } else {
-	setVar('trello', [
-		{
-			name: 'TRELLO_KEY',
-			value: key,
-		},
-	])
-	setVar('trello', [
-		{
-			name: 'TRELLO_SECRET',
-			value: token,
-		},
-	])
+
+	if (setVars) {
+		setVars([
+			{
+				name: 'TRELLO_SECRET',
+				value: token,
+			},
+			{
+				name: 'TRELLO_KEY',
+				value: key,
+			}
+		])
+	} else {
+		setVar('trello', [
+			{
+				name: 'TRELLO_KEY',
+				value: key,
+			},
+		])
+		setVar('trello', [
+			{
+				name: 'TRELLO_SECRET',
+				value: token,
+			},
+		])
+	}
+
 	notify('Secrets added successfully', 'success', 3000)
 	reIndex()
 }
