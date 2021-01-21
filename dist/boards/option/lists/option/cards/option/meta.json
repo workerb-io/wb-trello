@@ -3,6 +3,12 @@
 	"description": "cards cheat sheet",
 	"scripts": [
 		{
+			"name": "open",
+			"file": "open.js",
+			"type": "action",
+			"description": "Open Card"
+		},
+		{
 			"name": "delete",
 			"file": "delete.js",
 			"type": "action",
@@ -18,13 +24,19 @@
 			"name": "update",
 			"file": "update.js",
 			"type": "action",
-			"description": "Rename a card"
+			"description": "Update card description"
 		},
 		{
 			"name": "members",
 			"file": "members",
 			"type": "folder",
-			"description": "members cheat sheet"
+			"description": "List all members of the card"
+		},
+		{
+			"name": "addMembers",
+			"file": "addMembers",
+			"type": "folder",
+			"description": "List all members of the board except card members"
 		}
 	]
 }

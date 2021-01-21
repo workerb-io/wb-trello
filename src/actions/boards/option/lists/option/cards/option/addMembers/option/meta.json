@@ -3,10 +3,10 @@
 	"description": "members cheatsheet",
 	"scripts": [
 		{
-			"name": "remove",
-			"file": "remove.js",
+			"name": "add",
+			"file": "add.js",
 			"type": "action",
-			"description": "Remove member from the Card"
+			"description": "Add member to the Card"
 		}
 	]
 }

@@ -1,5 +1,5 @@
 if (options.boards) {
-	open(options.boards.html_url)
+	open(options.boards.html_url);
 } else {
-	open('https://trello.com')
+	open('https://trello.com');
 }

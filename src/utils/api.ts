@@ -2,10 +2,10 @@
 import request from './request'
 
 interface UpdateCard {
-	cardId: string
-	newCardName?: string | null
-	shouldAddDescription?: boolean
-	description?: string | null
+	cardId: string;
+	newCardName?: string | null;
+	shouldAddDescription?: boolean;
+	description?: string | null;
 }
 
 export const getAllBoards = () => request.get('/1/members/me/boards?fields=name,url&')
@@ -39,5 +39,10 @@ export const updateCard = ({ cardId, newCardName, shouldAddDescription = false, 
 
 export const getAllBoardMembers = (boardId: string) => request.get(`/1/boards/${boardId}/members?`)
 
+export const getAllCardMembers = (cardId: string) => request.get(`/1/cards/${cardId}/members?`)
+
 export const addMemberToCardId = (cardId: string, memberId: string) =>
 	request.post(`/1/cards/${cardId}/idMembers?value=${memberId}&`)
+
+export const removeMemberFromCard = (cardId: string, memberId: string) =>
+	request.delete(`/1/cards/${cardId}/idMembers/${memberId}?`)

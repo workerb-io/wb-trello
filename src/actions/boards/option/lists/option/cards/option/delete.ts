@@ -1,23 +1,20 @@
 import { deleteCard } from '../../../../../../../utils/api'
-import { decodeApiResponse, handleErrors } from '../../../../../../../utils/helper'
+import { handleErrors } from '../../../../../../../utils/helper'
+import { BoardOptions, CardOptions, ListOptions } from '../../../../../../../utils/interfaces';
 
 if (options.boards && options.lists && options.cards) {
-	const { html_url, name: boardName } = options.boards
-	const { id } = options.cards
-	const { name } = options.lists
+	const { html_url: boardURL, name: boardName } = options.boards as BoardOptions;
+	const { id: cardId } = options.cards as CardOptions;
+	const { name: listName } = options.lists as ListOptions;
 
-	if (id) {
-		const response = deleteCard(id)
-
-		let result = response
-
-		if (result.status >= 200 && result.status <= 299) {
-			result = decodeApiResponse(response)
-			notify('Card Deleted', 'success', 2000)
-			open(html_url)
-			reIndex(['trello', 'boards', boardName, 'lists', name, 'cards'])
+	if (cardId) {
+		const response = deleteCard(cardId);
+		if (response.status >= 200 && response.status <= 299) {
+			notify('Card Deleted', 'success', 2000);
+			open(boardURL);
+			reIndex(['boards', boardName, 'lists', listName, 'cards']);
 		} else {
-			handleErrors(result.status, result.response)
+			handleErrors(response.status, response.response);
 		}
 	}
 }

@@ -1,15 +1,16 @@
 /* eslint-disable consistent-return */
 /* eslint-disable default-case */
-import { api, decodeApiResponse } from '../../../../utils/helper'
+import { decodeApiResponse } from '../../../../utils/helper'
 import { getAllListsOfBoard } from '../../../../utils/api'
+import { BoardOptions, ListOptions } from '../../../../utils/interfaces';
 
 export default () => {
-	if (!options.boards) return
+	if (!options.boards) return;
 
-	const { id, url } = options.boards
+	const { id: boardId, html_url: boardURL } = options.boards as BoardOptions;
 
-	const response = getAllListsOfBoard(id)
-	const result = decodeApiResponse(response)
+	const response = getAllListsOfBoard(boardId);
+	const result = decodeApiResponse(response);
 	switch (result.status) {
 		case 401:
 		case 500:
@@ -18,12 +19,17 @@ export default () => {
 			notify(result.response.message, 'error', 3000)
 	}
 
-	return JSON.stringify({
-		add: result.response.map((list: any, index: number) => ({
+	const lists: Array<ListOptions> = result.response.map((list: any, index: number) => {
+		let listInfo: ListOptions = {
 			name: list.name,
-			html_url: url,
+			html_url: boardURL,
 			id: list.id,
-			index,
-		})),
+			index
+		};
+		return listInfo;
+	});
+
+	return JSON.stringify({
+		add: lists
 	})
 }

@@ -1,22 +1,28 @@
 /* eslint-disable default-case */
 import { createNewList } from '../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../utils/helper'
+import { BoardOptions } from '../../../../utils/interfaces'
 
 if (options.boards) {
-	const { id, html_url, name } = options.boards
+	const {
+		id: boardId,
+		html_url: boardURL,
+		name: boardName } = options.boards as BoardOptions;
 
-	const listName: null | string = args.filter(Boolean).join(' ')
+	let listName: null | string = args.filter(Boolean).join(' ');
 
-	const response = createNewList(id, listName)
+	if (!listName) {
+		listName = prompt("Enter list name");
+	}
 
-	let result = response
+	const response = createNewList(boardId, listName);
 
-	if (result.status >= 200 && result.status <= 299) {
-		result = decodeApiResponse(response)
-		notify('List Created', 'success', 2000)
-		open(html_url)
-		reIndex(['trello', 'boards', name, 'lists'])
+	if (response.status >= 200 && response.status <= 299) {
+		let result = decodeApiResponse(response);
+		notify('List Created', 'success', 2000);
+		open(boardURL);
+		reIndex(['boards', boardName, 'lists']);
 	} else {
-		handleErrors(result.status, result.response)
+		handleErrors(response.status, response.response)
 	}
 }

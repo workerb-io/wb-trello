@@ -1,22 +1,29 @@
 /* eslint-disable consistent-return */
-import { getAllBoardMembers } from '../../../../../../../../utils/api'
+import { getAllCardMembers } from '../../../../../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../../../../../utils/helper'
+import { CardOptions, MemberOptions } from '../../../../../../../../utils/interfaces'
 
 export default (): string | undefined => {
-	if (!options.boards) return
+	if (!options.cards) return
 
-	const { id } = options.boards
-	const response = getAllBoardMembers(id)
-	const result = decodeApiResponse(response)
+	const { id: cardId } = options.cards as CardOptions;
+	const response = getAllCardMembers(cardId);
+	const result = decodeApiResponse(response);
 
 	if (!(result.status >= 200 && result.status <= 299)) {
-		handleErrors(result.status, result.response.message)
-		return
+		handleErrors(result.status, result.response.message);
+		return;
 	}
-	return JSON.stringify({
-		add: result.response.map((member: any) => ({
+
+	const cardMembers: Array<MemberOptions> = result.response.map((member: any) => {
+		const memberInfo: MemberOptions = {
 			name: `${member.fullName}(@${member.username})`,
 			id: member.id,
-		})),
+		};
+		return memberInfo;
+	})
+
+	return JSON.stringify({
+		add: cardMembers
 	})
 }
