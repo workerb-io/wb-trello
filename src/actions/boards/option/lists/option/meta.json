@@ -15,16 +15,10 @@
       "description": "Archive a list"
     },
     {
-      "name": "move",
-      "file": "move.js",
-      "type": "action",
-      "description": "Archive a list"
-    },
-    {
       "name": "cards",
       "file": "cards",
       "type": "folder",
-      "description": "Get all cards"
+      "description": "Get all cards of the list"
     }
   ]
 }

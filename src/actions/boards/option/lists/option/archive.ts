@@ -1,22 +1,21 @@
 import { archiveList } from '../../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../../utils/helper'
+import { BoardOptions, ListOptions } from '../../../../../utils/interfaces';
 
 if (options.boards && options.lists) {
-	const { id } = options.lists
-	const { html_url, name } = options.boards
+	const { id: listId } = options.lists as ListOptions;
+	const { html_url: boardUrl, name: boardName } = options.boards as BoardOptions;
 
-	if (id) {
-		const response = archiveList(id)
+	if (listId) {
+		const response = archiveList(listId);
 
-		let result = response
-
-		if (result.status >= 200 && result.status <= 299) {
-			result = decodeApiResponse(response)
-			notify('List Archived', 'success', 2000)
-			open(html_url)
-			reIndex(['trello', 'boards', name, 'lists'])
+		if (response.status >= 200 && response.status <= 299) {
+			let result = decodeApiResponse(response);
+			notify('List Archived', 'success', 2000);
+			open(boardUrl);
+			reIndex(['boards', boardName, 'lists']);
 		} else {
-			handleErrors(result.status, result.response)
+			handleErrors(response.status, response.response);
 		}
 	}
 }

@@ -1,20 +1,19 @@
 /* eslint-disable default-case */
-import { decodeApiResponse, handleErrors } from '../../../utils/helper'
-import { deleteBoard } from '../../../utils/api'
+import { decodeApiResponse, handleErrors } from '../../../utils/helper';
+import { deleteBoard } from '../../../utils/api';
+import { BoardOptions } from '../../../utils/interfaces';
 
 if (options.boards) {
-	const { id } = options.boards
+	const { id: boardId } = options.boards as BoardOptions;
 
-	const response = deleteBoard(id)
+	const response = deleteBoard(boardId);
 
-	let result = response
-
-	if (result.status >= 200 && result.status <= 299) {
-		result = decodeApiResponse(response)
-		notify('Board Deleted', 'success', 2000)
-		open('https://trello.com/')
-		reIndex(['trello', 'boards'])
+	if (response.status >= 200 && response.status <= 299) {
+		let result = decodeApiResponse(response);
+		notify('Board Deleted', 'success', 2000);
+		open('https://trello.com/');
+		reIndex(['boards']);
 	} else {
-		handleErrors(result.status, result.response)
+		handleErrors(response.status, response.response);
 	}
 }

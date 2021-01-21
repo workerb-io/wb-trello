@@ -1,35 +1,35 @@
 import { updateCard } from '../../../../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../../../../utils/helper'
+import { BoardOptions, CardOptions, ListOptions } from '../../../../../../../utils/interfaces';
 
 if (options.lists && options.cards) {
-	const { id } = options.cards
-	const { name: boardName } = options.boards
-	const { name } = options.lists
-	let cardDescription: string = args.filter(Boolean).join(' ')
+	const { id: cardId } = options.cards as CardOptions;
+	const { name: boardName } = options.boards as BoardOptions;
+	const { name: listName } = options.lists as ListOptions;
+
+	let cardDescription: string = args.filter(Boolean).join(' ');
 
 	if (!cardDescription) {
 		cardDescription = prompt('Please enter a new list name') as string
 	}
 
-	if (id) {
+	if (cardId) {
 		const response = updateCard({
-			cardId: id,
+			cardId: cardId,
 			shouldAddDescription: true,
 			description: cardDescription,
-		})
+		});
 
-		let result: {
-			response: { url?: string } | any
-			status: number
-		} = response
-
-		if (result.status >= 200 && result.status <= 299) {
-			result = decodeApiResponse(response)
-			notify('Card Description Added', 'success', 2000)
-			open(result.response.url)
-			reIndex(['trello', 'boards', boardName, 'lists', name, 'cards'])
+		if (response.status >= 200 && response.status <= 299) {
+			let result: {
+				response: { url?: string } | any
+				status: number
+			} = decodeApiResponse(response);
+			notify('Card Description Updated', 'success', 2000);
+			// open(result.response.url);
+			reIndex(['boards', boardName, 'lists', listName, 'cards']);
 		} else {
-			handleErrors(result.status, result.response)
+			handleErrors(response.status, response.response);
 		}
 	}
 }
