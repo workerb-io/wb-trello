@@ -1,0 +1,17 @@
+name: Build
+on:
+  push:
+    branches:
+      - master
+jobs:
+  main:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@master
+      - name: Yarn Install
+        run: |
+          yarn install
+      - name: Yarn Build
+        run: yarn build
