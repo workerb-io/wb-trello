@@ -1,3 +1,4 @@
+// @description Setup trello secrets
 open('https://trello.com/app-key')
 
 const key = read('#key', {

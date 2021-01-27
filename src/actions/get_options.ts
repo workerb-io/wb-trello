@@ -1,3 +1,4 @@
+// @description Get default options
 import { key, secret } from '../utils/constants'
 
 const returnOptions = () => {

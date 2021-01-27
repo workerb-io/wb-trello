@@ -1,13 +1,14 @@
+// @description Remove member from the Card
 import { removeMemberFromCard } from '../../../../../../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../../../../../../utils/helper'
 import { BoardOptions, CardOptions, ListOptions, MemberOptions } from '../../../../../../../../../utils/interfaces'
 
-if (options?.cards && options?.members) {
+if (options?.cards && options?.cardMembers) {
 
 	const { name: boardName } = options.boards as BoardOptions;
 	const { name: listName } = options.lists as ListOptions;
 	const { id: cardId, name: cardName, html_url: cardURL } = options.cards as CardOptions;
-	const { id: memberId } = options.members as MemberOptions;
+	const { id: memberId } = options.cardMembers as MemberOptions;
 
 	const response = removeMemberFromCard(cardId, memberId);
 

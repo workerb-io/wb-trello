@@ -1,24 +1,20 @@
 {
-  "name": "lists options",
-  "description": "lists options",
-  "scripts": [
-    {
-      "name": "rename",
-      "file": "rename.js",
-      "type": "action",
-      "description": "Rename a list"
-    },
-    {
-      "name": "archive",
-      "file": "archive.js",
-      "type": "action",
-      "description": "Archive a list"
-    },
-    {
-      "name": "cards",
-      "file": "cards",
-      "type": "folder",
-      "description": "Get all cards of the list"
-    }
-  ]
-}
+	  "name": "option",
+	  "description": "",
+	  "scripts": [{
+	  "name": "archive",
+	  "file": "archive.js",
+	  "type": "action",
+	  "description": "Archive List"
+	},{
+	  "name": "rename",
+	  "file": "rename.js",
+	  "type": "action",
+	  "description": "Rename List"
+	},{
+	  "name": "cards",
+	  "file": "cards",
+	  "type": "folder",
+	  "description": "Display all cards of the list"
+	}]
+	}

@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+// @description Actions for selected member
 import { getAllCardMembers, getAllBoardMembers } from '../../../../../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../../../../../utils/helper'
 import { BoardOptions, CardOptions, MemberOptions } from '../../../../../../../../utils/interfaces';
