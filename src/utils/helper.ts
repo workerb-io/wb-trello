@@ -1,11 +1,12 @@
 /* eslint-disable default-case */
 import { uri, key, secret } from './constants'
+import { DecodedAPIResponse } from './interfaces'
 
 export function api(endpoint: string): string {
-	return `${uri}${endpoint}key=${key}&token=${secret}`
+	return `${uri}${endpoint}key=${key}&token=${secret}`;
 }
 
-export function decodeApiResponse(apiResponse: any): { response: any; status: number } {
+export function decodeApiResponse(apiResponse: APIResponse): DecodedAPIResponse {
 	const result = apiResponse
 
 	if (!result.response) {

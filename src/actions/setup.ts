@@ -38,7 +38,7 @@ if (!key || !token) {
 				name: 'TRELLO_KEY',
 				value: key,
 			}
-		])
+		], { local: true })
 	} else {
 		setVar('trello', [
 			{

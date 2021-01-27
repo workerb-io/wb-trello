@@ -2,10 +2,11 @@
 /* eslint-disable default-case */
 import { decodeApiResponse } from '../../utils/helper'
 import { getAllBoards } from '../../utils/api'
+import { BoardOptions } from '../../utils/interfaces';
 
 export default () => {
-	const response = getAllBoards()
-	const result = decodeApiResponse(response)
+	const response = getAllBoards();
+	const result = decodeApiResponse(response);
 	switch (result.status) {
 		case 401:
 		case 500:
@@ -15,11 +16,14 @@ export default () => {
 			return
 	}
 
-	const boards = result.response.map((board: any) => ({
-		name: board.name,
-		html_url: board.url,
-		id: board.id,
-	}))
+	const boards: Array<BoardOptions> = result.response.map((board: any) => {
+		const boardInfo: BoardOptions = {
+			name: board.name,
+			html_url: board.url,
+			id: board.id,
+		};
+		return boardInfo;
+	});
 
 	return JSON.stringify({
 		add: boards,
