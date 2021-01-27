@@ -1,5 +1,5 @@
-import { getAllListsOfBoard } from '../../../../../utils/api'
-import { decodeApiResponse } from '../../../../../utils/helper'
+// @description Move List
+// @ignore
 
 if (options.boards && options.lists) {
 	const { id, html_url } = options.boards

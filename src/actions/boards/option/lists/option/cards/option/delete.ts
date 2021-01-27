@@ -1,3 +1,4 @@
+// @description Delete Card
 import { deleteCard } from '../../../../../../../utils/api'
 import { handleErrors } from '../../../../../../../utils/helper'
 import { BoardOptions, CardOptions, ListOptions } from '../../../../../../../utils/interfaces';

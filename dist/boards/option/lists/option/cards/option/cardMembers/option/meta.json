@@ -1,0 +1,10 @@
+{
+	  "name": "option",
+	  "description": "",
+	  "scripts": [{
+	  "name": "remove",
+	  "file": "remove.js",
+	  "type": "action",
+	  "description": "Remove member from the Card"
+	}]
+	}

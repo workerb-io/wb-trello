@@ -1,3 +1,5 @@
+// @description Open Board
+// @ignore
 if (options.boards) {
 	open(options.boards.html_url);
 } else {

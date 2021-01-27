@@ -1,6 +1,6 @@
 {
-	  "name": "addMembers",
-	  "description": "Display members of the board that are not present in the card",
+	  "name": "cardMembers",
+	  "description": "Display all the members of the card",
 	  "scripts": [{
 	  "name": "get_options",
 	  "file": "get_options.js",
