@@ -1,24 +1,20 @@
 {
-	"name": "cards",
-	"description": "cards cheat sheet",
-	"scripts": [
-		{
-			"name": "new",
-			"file": "new.js",
-			"type": "action",
-			"description": "Create a new Card"
-		},
-		{
-			"name": "option",
-			"file": "option",
-			"type": "folder",
-			"description": "actions for selected card"
-		},
-		{
-			"name": "get_options",
-			"file": "get_options.js",
-			"type": "action",
-			"description": "card options"
-		}
-	]
-}
+	  "name": "cards",
+	  "description": "Display all cards of the list",
+	  "scripts": [{
+	  "name": "get_options",
+	  "file": "get_options.js",
+	  "type": "action",
+	  "description": "Card options"
+	},{
+	  "name": "new",
+	  "file": "new.js",
+	  "type": "action",
+	  "description": "Create a new card"
+	},{
+	  "name": "option",
+	  "file": "option",
+	  "type": "folder",
+	  "description": "Display members of the board that are not present in the card"
+	}]
+	}

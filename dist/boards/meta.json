@@ -1,24 +1,20 @@
 {
-	"name": "boards",
-	"description": "boards cheat sheet",
-	"scripts": [
-		{
-			"name": "new",
-			"file": "new.js",
-			"type": "action",
-			"description": "Create New Board"
-		},
-		{
-			"name": "option",
-			"file": "option",
-			"type": "folder",
-			"description": "actions for selected board"
-		},
-		{
-			"name": "get_options",
-			"file": "get_options.js",
-			"type": "action",
-			"description": "board options"
-		}
-	]
-}
+	  "name": "boards",
+	  "description": "Display all the boards!",
+	  "scripts": [{
+	  "name": "get_options",
+	  "file": "get_options.js",
+	  "type": "action",
+	  "description": "Board options"
+	},{
+	  "name": "new",
+	  "file": "new.js",
+	  "type": "action",
+	  "description": "Create New Board"
+	},{
+	  "name": "option",
+	  "file": "option",
+	  "type": "folder",
+	  "description": ""
+	}]
+	}

@@ -1,6 +1,7 @@
 /* eslint-disable default-case */
-import { decodeApiResponse, handleErrors } from '../../../utils/helper';
-import { deleteBoard } from '../../../utils/api';
+// @description Delete Board
+import { decodeApiResponse, handleErrors } from '../../../utils/helper'
+import { deleteBoard } from '../../../utils/api'
 import { BoardOptions } from '../../../utils/interfaces';
 
 if (options.boards) {

@@ -1,5 +1,6 @@
 /* eslint-disable consistent-return */
 /* eslint-disable default-case */
+// @description Board options
 import { decodeApiResponse } from '../../utils/helper'
 import { getAllBoards } from '../../utils/api'
 import { BoardOptions } from '../../utils/interfaces';

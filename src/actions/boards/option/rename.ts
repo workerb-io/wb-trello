@@ -1,4 +1,5 @@
 /* eslint-disable default-case */
+// @description Rename Board
 import { decodeApiResponse, handleErrors } from '../../../utils/helper'
 import { renameBoard } from '../../../utils/api'
 import { BoardOptions } from '../../../utils/interfaces';

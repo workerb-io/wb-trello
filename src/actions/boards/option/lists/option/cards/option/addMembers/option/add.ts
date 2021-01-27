@@ -1,3 +1,4 @@
+// @description Add member to the Card
 import { addMemberToCardId } from '../../../../../../../../../utils/api'
 import { decodeApiResponse, handleErrors } from '../../../../../../../../../utils/helper'
 import { BoardOptions, CardOptions, ListOptions, MemberOptions } from '../../../../../../../../../utils/interfaces';

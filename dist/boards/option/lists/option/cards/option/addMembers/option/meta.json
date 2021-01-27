@@ -1,12 +1,10 @@
 {
-	"name": "members",
-	"description": "members cheatsheet",
-	"scripts": [
-		{
-			"name": "add",
-			"file": "add.js",
-			"type": "action",
-			"description": "Add member to the Card"
-		}
-	]
-}
+	  "name": "option",
+	  "description": "",
+	  "scripts": [{
+	  "name": "add",
+	  "file": "add.js",
+	  "type": "action",
+	  "description": "Add member to the Card"
+	}]
+	}
