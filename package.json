@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --mode=production",
-    "watch": "webpack --mode=production --watch --progress"
+    "watch": "webpack --mode=development --watch --progress"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.2",
