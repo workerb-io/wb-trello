@@ -1,5 +1,5 @@
 {
-	  "name": "trello package update",
+	  "name": "Trello",
 	  "description": "automate all the trello tasks",
 	  "scripts": [{
 	  "name": "get_options",
