@@ -10,27 +10,26 @@ const fileSystem = helpers.generateFS(`${__dirname}/src/actions`, "workerB");
 
 const entryFiles = helpers.generateEntryPaths(fileSystem.children);
 
+const mode = process.argv.filter(val => val.includes("--mode"));
+let environment = "production";
+if(mode.length > 0 && mode[0].includes("dev")) {
+  environment = "development";
+}
+
 const entryPaths = helpers
   .getFiles(entryFiles, ".ts")
   .map((file) => file.replace(".ts", ""))
   .filter((k) => !/meta\.json/g.test(k));
 
-// const metaFiles = helpers.getFiles(entryFiles, ".json");
-
-// const copyPatterns = metaFiles.map((metaFile) => ({
-//   from: `./src/actions/${metaFile}`,
-//   to: `./${metaFile}`,
-// }));
-
-// const rootJSON = fs.readFileSync("./src/actions/meta.json", "utf8");
-// const rootJSONParsed = rootJSON ? JSON.parse(rootJSON) : {};
-
-// let iconPath = "";
-
-// if (rootJSONParsed.icon) {
-//   iconPath = path.join("./src/actions", rootJSONParsed.icon);
-//   // copyPatterns.concat({ from: iconPath, to: "./" });
-// }
+const folderDescriptionList = [
+    { path: "/boards", description: "Display all the boards!" },
+    { path: "/boards/option/lists", description: "Display all the lists of the board" },
+    { path: "/boards/option/lists/option/cards", description: "Display all cards of the list" },
+    { path: "/boards/option/lists/option/cards/option/addMembers",
+      description: "Display members of the board that are not present in the card" },
+    { path: "/boards/option/lists/option/cards/option/cardMembers",
+      description: "Display all the members of the card" }
+]
 
 module.exports = {
   entry: entryPaths.reduce((result, entryPath) => {
@@ -64,15 +63,10 @@ module.exports = {
   },
   plugins: [
     new WBMetaJsonGenerator({
-      package: "trello package update",
-      packageDescription: "automate all the trello tasks",
-      folderDescriptionList:[
-        {path: "/boards", description: "Display all the boards!"},
-        {path: "/boards/option/lists", description: "Display all the lists of the board"},
-        {path: "/boards/option/lists/option/cards", description: "Display all cards of the list"},
-        {path: "/boards/option/lists/option/cards/option/addMembers", description: "Display members of the board that are not present in the card"},
-        {path: "/boards/option/lists/option/cards/option/cardMembers", description: "Display all the members of the card"}
-      ]
+      environment,
+      package: "Trello",
+      packageDescription: "Automate all the trello tasks",
+      folderDescriptionList
     })
   ],
   optimization: {

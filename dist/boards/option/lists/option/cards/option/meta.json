@@ -1,6 +1,6 @@
 {
 	  "name": "option",
-	  "description": "Display members of the board that are not present in the card",
+	  "description": "",
 	  "scripts": [{
 	  "name": "delete",
 	  "file": "delete.js",
