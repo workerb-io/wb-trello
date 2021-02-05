@@ -1,10 +1,6 @@
 name: Release
 on:
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "Tag"
-        required: true
 jobs:
   main:
     name: tag
@@ -19,14 +15,17 @@ jobs:
         run: yarn build
       - name: Dist
         run: zip -r dist dist/
+      - name: Get current date
+        id: date
+        run: echo "name=$(expr $(date +'%y') - 20)$(date +'.%j.%H%M')" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: ${{ github.event.inputs.tag }}
-          release_name: Release ${{ github.event.inputs.tag }}
+          tag_name: ${{ steps.date.output.date }}
+          release_name: Release ${{ steps.date.output.date }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
