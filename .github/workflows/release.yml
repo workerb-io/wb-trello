@@ -15,19 +15,14 @@ jobs:
         run: yarn build
       - name: Dist
         run: zip -r dist dist/
-      - name: Get current date
-        id: date
-        env:
-          VERSION: $(expr $(date +'%y') - 20)$(date +'.%j.%H%M')
-          TAG_NAME: $VERSION"
-          RELEASE_NAME: $VERSION"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          TAG_NAME: ${{ steps.date.output.date }}
-          RELEASE_NAME: Release ${{ steps.date.output.date }}
+          VERSION: $(expr $(date +'%y') - 20)$(date +'.%j.%H%M')
+          TAG_NAME: $VERSION
+          RELEASE_NAME: $VERSION
         with:
           tag_name: ${{ env.TAG_NAME }}
           release_name: ${{ env.RELEASE_NAME }}
