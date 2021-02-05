@@ -65,7 +65,7 @@ module.exports = {
     new WBMetaJsonGenerator({
       environment,
       package: "Trello",
-      packageDescription: "Automate all the trello tasks",
+      packageDescription: "workerB package for trello.com",
       folderDescriptionList
     })
   ],
