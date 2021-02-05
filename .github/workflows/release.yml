@@ -23,9 +23,11 @@ jobs:
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          TAG_NAME: ${{ steps.date.output.date }}
+          RELEASE_NAME: Release ${{ steps.date.output.date }}
         with:
-          tag_name: ${{ steps.date.output.date }}
-          release_name: Release ${{ steps.date.output.date }}
+          tag_name: $TAG_NAME
+          release_name: Release $RELEASE_NAME
           draft: false
           prerelease: false
       - name: Upload Release Asset
