@@ -17,7 +17,10 @@ jobs:
         run: zip -r dist dist/
       - name: Get current date
         id: date
-        run: echo "name=$(expr $(date +'%y') - 20)$(date +'.%j.%H%M')" >> $GITHUB_ENV
+        run: |
+          VERSION=$(expr $(date +'%y') - 20)$(date +'.%j.%H%M')
+          echo "::set-env name=TAG_NAME::$VERSION"
+          echo "::set-env name=RELEASE_NAME::$VERSION"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -26,8 +29,8 @@ jobs:
           TAG_NAME: ${{ steps.date.output.date }}
           RELEASE_NAME: Release ${{ steps.date.output.date }}
         with:
-          tag_name: $TAG_NAME
-          release_name: Release $RELEASE_NAME
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: ${{ env.RELEASE_NAME }}
           draft: false
           prerelease: false
       - name: Upload Release Asset
