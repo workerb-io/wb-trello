@@ -18,8 +18,8 @@ jobs:
       - name: Get current date
         run: |
           VERSION=$(expr $(date +'%y') - 20)$(date +'.%j.%H%M')
-          echo "TAG_NAME=3.7" >> $GITHUB_ENV
-          echo "RELEASE_NAME=3.7" >> $GITHUB_ENV
+          echo "TAG_NAME=$VERSION" >> $GITHUB_ENV
+          echo "RELEASE_NAME=$VERSION" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
