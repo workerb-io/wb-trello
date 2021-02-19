@@ -111,3 +111,5 @@ trello
 .DS_Store
 
 config.json
+
+dist
