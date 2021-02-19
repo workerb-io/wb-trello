@@ -1,10 +1,9 @@
 const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const webpack = require("webpack");
 const fs = require("fs");
 const helpers = require("./webpack.helpers.js");
-const WBMetaJsonGenerator = require("meta-json-generator");
+const WBMetaJsonGenerator = require("wb-packager-webpack-plugin");
 
 const fileSystem = helpers.generateFS(`${__dirname}/src/actions`, "workerB");
 
@@ -22,13 +21,31 @@ const entryPaths = helpers
   .filter((k) => !/meta\.json/g.test(k));
 
 const folderDescriptionList = [
-    { path: "/boards", description: "Display all the boards!" },
-    { path: "/boards/option/lists", description: "Display all the lists of the board" },
-    { path: "/boards/option/lists/option/cards", description: "Display all cards of the list" },
-    { path: "/boards/option/lists/option/cards/option/addMembers",
-      description: "Display members of the board that are not present in the card" },
-    { path: "/boards/option/lists/option/cards/option/cardMembers",
-      description: "Display all the members of the card" }
+    { 
+      path: "/boards",
+      description: "Display all the boards",
+      iconPath: "src/actions/boards/board_icons/board-icon-64.png"
+    },
+    { 
+      path: "/boards/option/lists",
+      description: "Display all the lists of the board",
+      iconPath: "src/actions/boards/option/lists/list_icons/list-icon-64.png"
+    },
+    {
+      path: "/boards/option/lists/option/cards",
+      description: "Display all cards of the list",
+      iconPath: "src/actions/boards/option/lists/option/cards/card_icons/card-icon.png"
+    },
+    {
+      path: "/boards/option/lists/option/cards/option/addMembers",
+      description: "Display members of the board that are not present in the card",
+      iconPath: "src/actions/boards/option/lists/option/cards/option/member_icons/add-member-icon-64.png"
+    },
+    {
+      path: "/boards/option/lists/option/cards/option/cardMembers",
+      description: "Display all the members of the card",
+      iconPath: "src/actions/boards/option/lists/option/cards/option/member_icons/member-icon-64.png"
+    }
 ]
 
 module.exports = {
@@ -67,9 +84,8 @@ module.exports = {
       package: "Trello",
       packageDescription: "workerB package for trello.com",
       packageIcon: "https://i.pinimg.com/280x280_RS/0f/b8/e6/0fb8e676a1cd0eae9b0f7ea862c40f93.jpg",
-      sites: [
-        "https://trello.com",
-      ],
+      sites: [ "https://trello.com"],
+      readmeFIle: "README.md",
       folderDescriptionList
     })
   ],
