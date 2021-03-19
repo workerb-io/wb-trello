@@ -12,4 +12,4 @@ setVars([
 ], { local: true });
 
 notify('Secrets removed successfully', 'success', 3000);
-reIndex();
+reIndex([]);
