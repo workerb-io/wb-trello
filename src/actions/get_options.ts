@@ -4,7 +4,7 @@ import { key, secret } from '../utils/constants'
 const returnOptions = () => {
 	if (!key || !secret) {
 		return JSON.stringify({
-			remove: ['boards'],
+			remove: ['boards', 'logout'],
 		})
 	}
 	return JSON.stringify({
