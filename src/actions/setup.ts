@@ -56,5 +56,5 @@ if (!key || !token) {
 	}
 
 	notify('Secrets added successfully', 'success', 3000)
-	reIndex()
+	reIndex([])
 }
