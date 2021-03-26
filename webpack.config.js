@@ -24,7 +24,8 @@ const folderDescriptionList = [
     { 
       path: "/boards",
       description: "Display all the boards",
-      iconPath: "src/actions/boards/board_icons/board-icon-64.png"
+      iconPath: "src/actions/boards/board_icons/board-icon-64.png",
+      defaultAction: "index"
     },
     { 
       path: "/boards/option/lists",
@@ -34,17 +35,20 @@ const folderDescriptionList = [
     {
       path: "/boards/option/lists/option/cards",
       description: "Display all cards of the list",
-      iconPath: "src/actions/boards/option/lists/option/cards/card_icons/card-icon.png"
+      iconPath: "src/actions/boards/option/lists/option/cards/card_icons/card-icon.png",
+      defaultAction: "open"
     },
     {
       path: "/boards/option/lists/option/cards/option/addMembers",
       description: "Display members of the board that are not present in the card",
-      iconPath: "src/actions/boards/option/lists/option/cards/option/member_icons/add-member-icon-64.png"
+      iconPath: "src/actions/boards/option/lists/option/cards/option/member_icons/add-member-icon-64.png",
+      defaultAction: "add"
     },
     {
       path: "/boards/option/lists/option/cards/option/cardMembers",
       description: "Display all the members of the card",
-      iconPath: "src/actions/boards/option/lists/option/cards/option/member_icons/member-icon-64.png"
+      iconPath: "src/actions/boards/option/lists/option/cards/option/member_icons/member-icon-64.png",
+      defaultAction: "remove"
     }
 ]
 
