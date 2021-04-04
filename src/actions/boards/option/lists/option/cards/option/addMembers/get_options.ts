@@ -5,7 +5,7 @@ import { decodeApiResponse, handleErrors } from '../../../../../../../../utils/h
 import { BoardOptions, CardOptions, MemberOptions } from '../../../../../../../../utils/interfaces';
 
 export default (): string | undefined => {
-	if (!options.cards && !options.boards) return;
+	if (!options.cards || !options.boards) return;
 
 	const { id: cardId } = options.cards as CardOptions;
 	const { id: boardId } = options.boards as BoardOptions;

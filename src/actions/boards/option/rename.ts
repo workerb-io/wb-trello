@@ -21,7 +21,6 @@ if (options.boards) {
 			status: number
 		} = decodeApiResponse(response);
 		notify('Board Renamed', 'success', 2000);
-		open(result.response.url);
 		reIndex(['boards']);
 	} else {
 		handleErrors(response.status, response.response);
