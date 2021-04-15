@@ -89,7 +89,7 @@ module.exports = {
       packageDescription: "trello.com",
       packageIcon: "https://i.pinimg.com/280x280_RS/0f/b8/e6/0fb8e676a1cd0eae9b0f7ea862c40f93.jpg",
       sites: [ "https://trello.com"],
-      readmeFIle: "README.md",
+      readmeFile: "README.md",
       folderDescriptionList
     })
   ],
